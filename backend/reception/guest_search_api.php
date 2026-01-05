@@ -224,21 +224,18 @@ try {
                         $sql .= " AND b.status != 'checked_out'";
                     }
                     
-                    // Guest Search: Show current guests
-                    // When loading all guests (type=all, no search term), show all active bookings matching stats
-                    // When include_future_bookings is true, show all bookings (no date restriction)
-                    // When include_future_bookings is false, only show active bookings (not checked out and not future)
-                    if ($includeFutureBookings === 'true') {
-                        // Show all bookings (no date restriction) - matches stats query logic
-                        // Stats query: WHERE b.status != 'checked_out'
-                        // So we don't add any date filter here, just rely on status filter above
-                    } else {
-                        // Show only active bookings (checked-in or current/upcoming confirmed/pending)
+                    // Guest Search: Show current guests and bookings that have arrived
+                    // Always show bookings where check-in date has arrived (today or past)
+                    // Only filter out future bookings (check-in date > today) when include_future_bookings is false
+                    if ($includeFutureBookings !== 'true') {
                         $sql .= " AND (
+                            b.check_in_date <= CURDATE() OR 
                             b.status = 'checked_in' OR 
-                            (b.status IN ('confirmed', 'pending', 'prebooked') AND b.check_out_date >= CURDATE())
+                            (b.status = 'confirmed' AND b.check_in_date <= CURDATE() AND b.check_out_date >= CURDATE()) OR
+                            (b.status = 'pending' AND b.check_in_date <= CURDATE() AND b.check_out_date >= CURDATE())
                         )";
                     }
+                    // When include_future_bookings is true, show all bookings including future ones
                     
                     $sql .= " ORDER BY b.created_at DESC";
                     
@@ -254,12 +251,11 @@ try {
                         // Add full_name field for frontend compatibility
                         $formattedGuest['full_name'] = !empty($guest['last_name']) ? trim($guest['first_name'] . ' ' . $guest['last_name']) : $guest['first_name'];
                         
-                        // Use actual checkout time for checked-out guests (if available)
-                        // Note: actual_checkout_date and actual_checkout_time columns may not exist in all databases
-                        if ($guest['booking_status'] === 'checked_out' && !empty($guest['actual_checkout_time'])) {
-                            $formattedGuest['check_out_time'] = $guest['actual_checkout_time'];
-                            $formattedGuest['check_out_date'] = $guest['actual_checkout_date'] ?? $guest['check_out_date'];
-                            $formattedGuest['is_smart_checkout'] = true;
+                        // Use checkout time from booking (actual_checkout columns don't exist)
+                        if ($guest['booking_status'] === 'checked_out') {
+                            $formattedGuest['check_out_time'] = $guest['check_out_time'] ?? null;
+                            $formattedGuest['check_out_date'] = $guest['check_out_date'] ?? null;
+                            $formattedGuest['is_smart_checkout'] = false;
                         } else {
                             $formattedGuest['is_smart_checkout'] = false;
                         }
@@ -936,7 +932,6 @@ try {
                         error_log("Using original booking time: " . $actualCheckoutTime);
                         
                         // Update booking status to checked_out with original booking times
-                        // Note: actual_checkout_date and actual_checkout_time columns may not exist in all databases
                         $stmt = $conn->prepare("
                             UPDATE bookings 
                             SET status = 'checked_out',
@@ -1009,10 +1004,9 @@ try {
                                 'status' => 'checked_out',
                                 'guest_name' => "{$booking['first_name']} {$booking['last_name']}",
                                 'scheduled_checkout_time' => $scheduledCheckoutTimeFormatted,
-                                'checkout_time' => $actualCheckoutTimeFormatted,
-                                'checkout_date' => $actualCheckoutDate,
+                                'actual_checkout_time' => $actualCheckoutTimeFormatted,
                                 'scheduled_checkout_date' => $scheduledCheckoutDate,
-                                'scheduled_checkout_time' => $scheduledCheckoutTime,
+                                'actual_checkout_date' => $actualCheckoutDate,
                                 'checkout_type' => $currentDateTime > $scheduledCheckoutDateTime ? 'late_checkout' : 'early_checkout'
                             ]
                         ];
