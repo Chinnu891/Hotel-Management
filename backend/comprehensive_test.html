@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Backend Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        button { background: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; padding: 15px; border-radius: 4px; white-space: pre-wrap; max-height: 400px; overflow-y: auto; }
+        .success { background: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
+        .error { background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
+        .info { background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 4px; }
+        .test-section h3 { margin-top: 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Comprehensive Backend Test</h1>
+        <p>This page tests all aspects of the backend to identify and resolve issues.</p>
+        
+        <div class="test-section">
+            <h3>1. Basic Connectivity Tests</h3>
+            <button onclick="testSimple()">Test Simple Endpoint</button>
+            <button onclick="testCors()">Test CORS Headers</button>
+            <button onclick="testBackend()">Test Backend</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>2. Database Tests</h3>
+            <button onclick="testDatabase()">Test Database Connection</button>
+            <button onclick="checkUsers()">Check Users</button>
+            <button onclick="checkDatabase()">Check Database Structure</button>
+            <button onclick="setupDatabase()">Setup Database</button>
+            <button onclick="createReceptionUser()">Create Reception User</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>3. Authentication Tests</h3>
+            <button onclick="testLogin()">Test Login (Admin)</button>
+            <button onclick="testReceptionLogin()">Test Login (Reception)</button>
+        </div>
+        
+        <div class="test-section">
+            <h3>4. Debug Information</h3>
+            <button onclick="getDebugInfo()">Get Debug Info</button>
+            <button onclick="testLoginDirect()">Test Login Direct (Debug)</button>
+            <button onclick="testLoginEndpoint()">Test Login Endpoint</button>
+        </div>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost/hotel-management/backend';
+        
+        async function testSimple() {
+            try {
+                const response = await fetch(`${API_BASE}/simple_test.php`);
+                const data = await response.json();
+                showResult('Simple Test: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Simple Test Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function testCors() {
+            try {
+                const response = await fetch(`${API_BASE}/cors_test.php`);
+                const data = await response.json();
+                showResult('CORS Test: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('CORS Test Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function testBackend() {
+            try {
+                const response = await fetch(`${API_BASE}/test.php`);
+                const data = await response.json();
+                showResult('Backend Test: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Backend Test Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function testDatabase() {
+            try {
+                const response = await fetch(`${API_BASE}/test_db.php`);
+                const data = await response.json();
+                showResult('Database Test: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Database Test Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function checkUsers() {
+            try {
+                const response = await fetch(`${API_BASE}/check_users.php`);
+                const data = await response.json();
+                showResult('Users Check: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Users Check Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function checkDatabase() {
+            try {
+                const response = await fetch(`${API_BASE}/check_database.php`);
+                const data = await response.json();
+                showResult('Database Structure Check: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Database Structure Check Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function setupDatabase() {
+            try {
+                const response = await fetch(`${API_BASE}/setup_database.php`);
+                const text = await response.text();
+                showResult('Database Setup: ' + text, 'info');
+            } catch (error) {
+                showResult('Database Setup Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function createReceptionUser() {
+            try {
+                const response = await fetch(`${API_BASE}/create_reception_user.php`);
+                const data = await response.json();
+                showResult('Create Reception User: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Create Reception User Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function testLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/login.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username: 'admin', password: 'password' })
+                });
+                
+                const data = await response.json();
+                showResult('Admin Login Test: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Admin Login Test Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function testReceptionLogin() {
+            try {
+                const response = await fetch(`${API_BASE}/auth/login.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username: 'reception', password: 'password' })
+                });
+                
+                const data = await response.json();
+                showResult('Reception Login Test: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Reception Login Test Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function getDebugInfo() {
+            try {
+                const response = await fetch(`${API_BASE}/debug.php`);
+                const data = await response.json();
+                showResult('Debug Info: ' + JSON.stringify(data, null, 2), 'info');
+            } catch (error) {
+                showResult('Debug Info Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function testLoginDirect() {
+            try {
+                const response = await fetch(`${API_BASE}/test_login_direct.php`);
+                const text = await response.text();
+                showResult('Login Direct Test (Raw Output): ' + text, 'info');
+            } catch (error) {
+                showResult('Login Direct Test Error: ' + error.message, 'error');
+            }
+        }
+        
+        async function testLoginEndpoint() {
+            try {
+                const response = await fetch(`${API_BASE}/test_login_endpoint.php`);
+                const data = await response.json();
+                showResult('Login Endpoint Test: ' + JSON.stringify(data, null, 2), 'success');
+            } catch (error) {
+                showResult('Login Endpoint Test Error: ' + error.message, 'error');
+            }
+        }
+        
+        function showResult(message, type) {
+            const resultDiv = document.getElementById('result');
+            const timestamp = new Date().toLocaleTimeString();
+            const resultHtml = `<div class="result ${type}"><strong>[${timestamp}]</strong> ${message}</div>`;
+            resultDiv.innerHTML = resultHtml + resultDiv.innerHTML;
+        }
+    </script>
+</body>
+</html>
