@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+vendor/
+frontend/node_modules/
+backend/vendor/
+
+# Build outputs
+frontend/build/
+frontend/dist/
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database
+*.sql.bak
+*.db
+*.sqlite
+
+# Uploads (keep structure but ignore files)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs
+*.log
+php_errors.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage
+coverage/
+frontend/coverage/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Package locks (optional - some prefer to commit these)
+# package-lock.json
+# composer.lock
+
