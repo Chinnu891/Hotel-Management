@@ -1,0 +1,19 @@
+# CORS headers are handled by PHP files to avoid duplication
+# Let PHP handle all requests including OPTIONS
+RewriteEngine On
+
+# Enable mod_headers if not already enabled
+<IfModule mod_headers.c>
+    # Additional CORS headers
+    Header always set Access-Control-Expose-Headers "Content-Length, X-JSON"
+</IfModule>
+
+# Security headers
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+
+# PHP settings
+php_flag display_errors Off
+php_flag log_errors On
+php_value error_log "php_errors.log"
