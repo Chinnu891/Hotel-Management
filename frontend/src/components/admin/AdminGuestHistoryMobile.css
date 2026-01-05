@@ -1,0 +1,732 @@
+/* Admin Guest History Mobile Optimizations */
+/* This CSS only affects mobile devices and preserves desktop layout */
+
+/* Mobile-specific overrides - only apply to small screens */
+@media (max-width: 767px) {
+  /* Main container mobile optimizations */
+  .admin-guest-history-mobile {
+    padding: 0.25rem !important;
+    min-height: 100vh;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden;
+    position: relative !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Header section mobile optimizations */
+  .admin-guest-management-header {
+    margin-bottom: 1rem !important;
+  }
+
+  .admin-guest-management-header h1 {
+    font-size: 1.25rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .admin-guest-management-header p {
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
+    padding: 0 0.5rem !important;
+  }
+
+  .admin-guest-management-header .mt-2 {
+    margin-top: 0.5rem !important;
+  }
+
+  .admin-guest-management-header .space-y-1 > * + * {
+    margin-top: 0.25rem !important;
+  }
+
+  /* Statistics cards mobile optimizations */
+  .admin-guest-management-header .grid {
+    gap: 0.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .admin-guest-management-header .bg-white {
+    padding: 0.5rem !important;
+  }
+
+  .admin-guest-management-header .w-8 {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+
+  .admin-guest-management-header .text-lg {
+    font-size: 1rem !important;
+  }
+
+  .admin-guest-management-header .text-xs {
+    font-size: 0.625rem !important;
+  }
+
+  /* Search and filters mobile optimizations */
+  .search-filters-container {
+    margin-bottom: 1rem !important;
+    padding: 0.5rem !important;
+  }
+
+  .search-filters-container h2 {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .search-filters-container .mb-2 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .search-filters-container .mb-3 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .search-filters-container .gap-2 {
+    gap: 0.5rem !important;
+  }
+
+  .search-filters-container .mb-3 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Search input mobile optimizations */
+  .search-input-group label {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .search-input-group input {
+    padding: 0.5rem 0.5rem 0.5rem 2rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  .search-input-group .pl-8 {
+    padding-left: 2rem !important;
+  }
+
+  .search-input-group .pr-3 {
+    padding-right: 0.75rem !important;
+  }
+
+  /* Search type selector mobile optimizations */
+  .search-type-selector {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  /* Force search fields to be side by side on mobile */
+  .search-filters-container .grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 0.5rem !important;
+  }
+
+  .search-filters-container .grid > div {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  /* Ensure search input group takes more space */
+  .search-input-group {
+    flex: 2 !important;
+  }
+
+  /* Ensure search type selector takes less space */
+  .form-field {
+    flex: 1 !important;
+  }
+
+  /* Action buttons mobile optimizations */
+  .action-buttons {
+    gap: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .action-button {
+    padding: 0.375rem 0.5rem !important;
+    font-size: 0.625rem !important;
+    min-height: 2rem !important;
+    min-width: 4rem !important;
+    flex: 1 !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+  }
+
+  /* Specific button styling for mobile */
+  .action-button.primary {
+    flex: 2 !important;
+    margin-right: 0.25rem !important;
+  }
+
+  .action-button:not(.primary) {
+    flex: 1 !important;
+    margin-left: 0.125rem !important;
+    margin-right: 0.125rem !important;
+  }
+
+  /* Force horizontal layout and override any grid classes */
+  .action-buttons.grid {
+    display: flex !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+  }
+
+  .action-buttons .col-span-2 {
+    flex: 2 !important;
+    grid-column: unset !important;
+  }
+
+  .action-buttons .sm\:col-span-1 {
+    flex: 1 !important;
+    grid-column: unset !important;
+  }
+
+  /* Button icon and text optimization for mobile */
+  .action-button svg {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+
+  .action-button .mr-1 {
+    margin-right: 0.25rem !important;
+  }
+
+  /* Ensure buttons maintain their gradient and shadow on mobile */
+  .action-button.primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3) !important;
+  }
+
+  .action-button.secondary {
+    background: linear-gradient(135deg, #6b7280, #4b5563) !important;
+    box-shadow: 0 2px 4px rgba(107, 114, 128, 0.3) !important;
+  }
+
+  .action-button.danger {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.3) !important;
+  }
+
+  /* Guest results section mobile optimizations */
+  .guest-results-container {
+    margin-bottom: 1rem !important;
+  }
+
+  .guest-results-container .bg-white {
+    padding: 0.5rem !important;
+  }
+
+  .guest-results-container h2 {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .guest-results-container .mb-3 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .guest-results-container .gap-2 {
+    gap: 0.5rem !important;
+  }
+
+  /* Individual guest cards mobile optimizations - Compact View */
+  .guest-card {
+    padding: 0.375rem !important;
+    margin-bottom: 0.375rem !important;
+    border-radius: 0.5rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .guest-card .mb-3 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .guest-card .mb-4 {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .guest-card .space-y-2 > * + * {
+    margin-top: 0.375rem !important;
+  }
+
+  .guest-card .space-y-3 > * + * {
+    margin-top: 0.5rem !important;
+  }
+
+  .guest-card .space-y-4 > * + * {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Compact guest header */
+  .guest-header h3 {
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .guest-header .text-xs {
+    font-size: 0.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .guest-header .space-y-2 > * + * {
+    margin-top: 0.375rem !important;
+  }
+
+  /* Ensure proper spacing for booking reference and room info */
+  .guest-header .space-y-2 > div:first-child {
+    margin-top: 0.5rem !important;
+  }
+
+  .guest-header .space-x-4 > * + * {
+    margin-left: 0.75rem !important;
+  }
+
+  /* Position status badges side by side */
+  .guest-header .flex {
+    gap: 0.5rem !important;
+    align-items: center !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .guest-header .bg-green-100,
+  .guest-header .bg-blue-100 {
+    margin: 0 !important;
+    font-size: 0.5rem !important;
+    padding: 0.125rem 0.375rem !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+    vertical-align: top !important;
+  }
+
+  /* Guest header mobile optimizations */
+  .guest-header h3 {
+    font-size: 0.875rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .guest-header .text-xs {
+    font-size: 0.625rem !important;
+  }
+
+  .guest-header .space-y-2 > * + * {
+    margin-top: 0.5rem !important;
+  }
+
+  .guest-header .space-x-4 > * + * {
+    margin-left: 1rem !important;
+  }
+
+  /* Action buttons in guest cards mobile optimizations */
+  .guest-card .space-y-3 > * + * {
+    margin-top: 0.75rem !important;
+  }
+
+  .guest-card .space-x-3 > * + * {
+    margin-left: 0.75rem !important;
+  }
+
+  .guest-card button {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.625rem !important;
+    min-height: 1.75rem !important;
+    min-width: 3.5rem !important;
+  }
+
+  /* Position action buttons to top right - Side by side */
+  .guest-card .space-y-3 {
+    position: absolute !important;
+    top: 0.25rem !important;
+    right: 0.25rem !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 0.125rem !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    z-index: 10 !important;
+    max-width: calc(100% - 0.5rem) !important;
+  }
+
+  /* Ensure guest header doesn't overlap with buttons */
+  .guest-header {
+    padding-right: 5rem !important;
+  }
+
+  /* Make guest card relative for absolute positioning */
+  .guest-card {
+    position: relative !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    will-change: auto !important;
+  }
+
+  /* Guest information grid mobile optimizations - Compact Cards */
+  .guest-info-grid {
+    gap: 0.25rem !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    position: relative !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .guest-info-grid .bg-white {
+    padding: 0.25rem !important;
+    border-radius: 0.375rem !important;
+    min-height: auto !important;
+  }
+
+  .guest-info-grid .mb-1 {
+    margin-bottom: 0.125rem !important;
+  }
+
+  .guest-info-grid .mb-1\.5 {
+    margin-bottom: 0.125rem !important;
+  }
+
+  .guest-info-grid h4 {
+    font-size: 0.5rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.125rem !important;
+    font-weight: 600 !important;
+    color: #6b7280 !important;
+  }
+
+  .guest-info-grid .text-xs {
+    font-size: 0.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .guest-info-grid .space-y-1 > * + * {
+    margin-top: 0.125rem !important;
+  }
+
+  /* Compact card content */
+  .guest-info-grid .flex {
+    gap: 0.25rem !important;
+  }
+
+  .guest-info-grid .w-4 {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+
+  .guest-info-grid .h-4 {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+
+  /* Reduce margins and padding for compact view */
+  .guest-info-grid .p-1\.5 {
+    padding: 0.25rem !important;
+  }
+
+  .guest-info-grid .p-3 {
+    padding: 0.25rem !important;
+  }
+
+  /* Additional information mobile optimizations */
+  .additional-info {
+    margin-top: 0.75rem !important;
+  }
+
+  .additional-info .bg-yellow-50,
+  .additional-info .bg-red-50 {
+    padding: 0.5rem !important;
+  }
+
+  .additional-info .text-sm {
+    font-size: 0.75rem !important;
+  }
+
+  .additional-info .mt-1 {
+    margin-top: 0.25rem !important;
+  }
+
+  .additional-info .mt-2 {
+    margin-top: 0.5rem !important;
+  }
+
+  /* Status badges mobile optimizations */
+  .status-badge {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.625rem !important;
+    border-radius: 0.375rem !important;
+  }
+
+  /* Loading and empty states mobile optimizations */
+  .loading-state,
+  .empty-state {
+    padding: 2rem 1rem !important;
+  }
+
+  .loading-state .text-3xl,
+  .empty-state .text-4xl {
+    font-size: 2rem !important;
+  }
+
+  .loading-state .text-base,
+  .empty-state .text-lg {
+    font-size: 0.875rem !important;
+  }
+
+  .loading-state .text-sm,
+  .empty-state .text-base {
+    font-size: 0.75rem !important;
+  }
+
+  /* Modal mobile optimizations */
+  .edit-modal {
+    padding: 0.5rem !important;
+  }
+
+  /* Guest Details Modal positioning - Fixed positioning like EditPopup */
+  .modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1rem !important;
+    overflow-y: auto !important;
+    z-index: 1000 !important;
+  }
+
+  .modal-content.extra-large {
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-height: 85vh !important;
+    overflow-y: auto !important;
+    background: white !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+    width: 100% !important;
+    max-width: 95vw !important;
+  }
+
+  /* Ensure modal opens in center of current viewport */
+  .modal-overlay {
+    align-items: flex-start !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  /* Center modal content in viewport */
+  .modal-content.extra-large {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+  }
+
+  /* Prevent page scroll when modal opens */
+  body.modal-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+  }
+
+  /* Ensure modal opens at current viewport position */
+  .modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 9999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Modal content positioning for mobile - Viewport centered */
+  .modal-content.extra-large {
+    position: fixed !important;
+    top: 50vh !important;
+    left: 50vw !important;
+    transform: translate(-50%, -50%) !important;
+    max-height: 80vh !important;
+    width: 95vw !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+  }
+
+  /* Force modal to center in current viewport */
+  .modal-overlay {
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    padding-top: 15vh !important;
+  }
+
+  /* Ensure modal opens at exact viewport center */
+  .modal-content.extra-large {
+    margin: auto !important;
+    position: fixed !important;
+    top: 50vh !important;
+    left: 50vw !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  /* Alternative positioning - Open modal in current view area */
+  .modal-content.extra-large {
+    position: fixed !important;
+    top: 35vh !important;
+    left: 50vw !important;
+    transform: translateX(-50%) !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+
+  /* Dynamic positioning - Modal opens at click position */
+  .modal-content.extra-large.click-positioned {
+    position: fixed !important;
+    transform: translate(-50%, -50%) !important;
+    max-height: 70vh !important;
+    width: 95vw !important;
+  }
+
+  /* Override any conflicting CSS for click-positioned modals */
+  .modal-content.extra-large[style*="position: fixed"] {
+    position: fixed !important;
+    top: var(--click-y, 35vh) !important;
+    left: var(--click-x, 50vw) !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+  }
+
+  /* Force click-positioned modal to use click coordinates */
+  .modal-content.extra-large.click-positioned {
+    position: fixed !important;
+    top: var(--click-y) !important;
+    left: var(--click-x) !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    max-height: 70vh !important;
+    width: 95vw !important;
+  }
+
+  /* Ensure inline styles take precedence */
+  .modal-content.extra-large.click-positioned[style] {
+    position: fixed !important;
+    top: inherit !important;
+    left: inherit !important;
+    transform: inherit !important;
+  }
+
+  .edit-modal .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .edit-modal .py-4 {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .edit-modal .p-6 {
+    padding: 1rem !important;
+  }
+
+  .edit-modal h3 {
+    font-size: 1rem !important;
+  }
+
+  /* Form fields mobile optimizations */
+  .form-field label {
+    font-size: 0.75rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .form-field input,
+  .form-field select {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+  }
+
+  .form-field .space-y-4 > * + * {
+    margin-top: 1rem !important;
+  }
+
+  /* Utility classes for mobile */
+  .mobile-text-xs {
+    font-size: 0.625rem !important;
+  }
+
+  .mobile-text-sm {
+    font-size: 0.75rem !important;
+  }
+
+  .mobile-text-base {
+    font-size: 0.875rem !important;
+  }
+
+  .mobile-text-lg {
+    font-size: 1rem !important;
+  }
+
+  .mobile-p-1 {
+    padding: 0.25rem !important;
+  }
+
+  .mobile-p-2 {
+    padding: 0.5rem !important;
+  }
+
+  .mobile-p-3 {
+    padding: 0.75rem !important;
+  }
+
+  .mobile-m-1 {
+    margin: 0.25rem !important;
+  }
+
+  .mobile-m-2 {
+    margin: 0.5rem !important;
+  }
+
+  .mobile-m-3 {
+    margin: 0.75rem !important;
+  }
+
+  .mobile-gap-1 {
+    gap: 0.25rem !important;
+  }
+
+  .mobile-gap-2 {
+    gap: 0.5rem !important;
+  }
+
+  .mobile-gap-3 {
+    gap: 0.75rem !important;
+  }
+}
+
+/* Ensure desktop styles are preserved for larger screens */
+@media (min-width: 768px) {
+  .admin-guest-history-mobile {
+    /* Reset any mobile-specific changes for desktop */
+    padding: inherit !important;
+    min-height: inherit !important;
+    width: inherit !important;
+    overflow-x: inherit !important;
+  }
+}

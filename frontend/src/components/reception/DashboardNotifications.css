@@ -1,0 +1,92 @@
+/* Dashboard Notifications Styles */
+.notifications-container {
+  @apply relative;
+}
+
+.notifications-button {
+  @apply relative p-2 text-gray-600 hover:text-gray-900 transition-colors;
+}
+
+.notifications-badge {
+  @apply absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center;
+}
+
+.notifications-dropdown {
+  @apply absolute right-0 mt-2 w-80 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-50;
+}
+
+.notifications-header {
+  @apply px-4 py-3 border-b border-gray-200;
+}
+
+.notifications-title {
+  @apply text-sm font-medium text-gray-900;
+}
+
+.notifications-list {
+  @apply max-h-96 overflow-y-auto;
+}
+
+.notification-item {
+  @apply px-4 py-3 hover:bg-gray-50 transition-colors cursor-pointer;
+}
+
+.notification-item.unread {
+  @apply bg-blue-50;
+}
+
+.notification-content {
+  @apply flex items-start space-x-3;
+}
+
+.notification-icon {
+  @apply flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm;
+}
+
+.notification-icon.info {
+  @apply bg-blue-100 text-blue-600;
+}
+
+.notification-icon.success {
+  @apply bg-green-100 text-green-600;
+}
+
+.notification-icon.warning {
+  @apply bg-yellow-100 text-yellow-600;
+}
+
+.notification-icon.error {
+  @apply bg-red-100 text-red-600;
+}
+
+.notification-details {
+  @apply flex-1 min-w-0;
+}
+
+.notification-title {
+  @apply text-sm font-medium text-gray-900;
+}
+
+.notification-message {
+  @apply text-sm text-gray-600 mt-1;
+}
+
+.notification-time {
+  @apply text-xs text-gray-500 mt-2;
+}
+
+.notifications-footer {
+  @apply px-4 py-3 border-t border-gray-200 text-center;
+}
+
+.mark-all-read {
+  @apply text-sm text-blue-600 hover:text-blue-800 font-medium;
+}
+
+.empty-notifications {
+  @apply px-4 py-8 text-center text-gray-500;
+}
+
+.empty-icon {
+  @apply w-12 h-12 mx-auto mb-3 text-gray-300;
+}

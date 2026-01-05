@@ -1,0 +1,310 @@
+/* Optimized Animations for Reception Site - Smooth & Fast Performance */
+
+/* Hardware Acceleration & Performance Optimizations */
+.optimized-animation {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+}
+
+/* Smooth Transitions - Optimized Durations */
+.smooth-transition {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smooth-transition-fast {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.smooth-transition-medium {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover Effects - Optimized for Performance */
+.hover-lift {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px) translateZ(0);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth Scale Effects */
+.scale-on-hover {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.02) translateZ(0);
+}
+
+/* Fade In Animation - Optimized */
+@keyframes fadeInOptimized {
+  from {
+    opacity: 0;
+    transform: translateY(10px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInOptimized 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Slide In Animation - Optimized */
+@keyframes slideInOptimized {
+  from {
+    opacity: 0;
+    transform: translateX(-20px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+}
+
+.slide-in {
+  animation: slideInOptimized 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Smooth Loading States */
+.loading-pulse {
+  animation: loadingPulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Optimized Navigation Animations */
+.nav-item-optimized {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item-optimized::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item-optimized:hover::before {
+  left: 100%;
+}
+
+.nav-item-optimized:hover {
+  transform: translateY(-1px) translateZ(0);
+}
+
+/* Smooth Card Animations */
+.card-animate {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+}
+
+.card-animate:hover {
+  transform: translateY(-3px) translateZ(0);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Optimized Button Animations */
+.btn-optimized {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+}
+
+.btn-optimized:hover {
+  transform: translateY(-1px) translateZ(0);
+}
+
+.btn-optimized:active {
+  transform: translateY(0) translateZ(0);
+  transition: all 0.05s ease;
+}
+
+/* Smooth Modal Animations */
+.modal-enter {
+  animation: modalEnter 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* Optimized Table Row Animations */
+.table-row-animate {
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.table-row-animate:hover {
+  background-color: rgba(59, 130, 246, 0.05);
+  transform: translateX(2px) translateZ(0);
+}
+
+/* Smooth Status Changes */
+.status-change {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimized Icon Animations */
+.icon-optimized {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-optimized:hover {
+  transform: scale(1.1) translateZ(0);
+}
+
+/* Smooth Progress Bars */
+.progress-smooth {
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimized Spinner */
+.spinner-optimized {
+  animation: spinOptimized 1s linear infinite;
+  transform: translateZ(0);
+}
+
+@keyframes spinOptimized {
+  from {
+    transform: rotate(0deg) translateZ(0);
+  }
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+/* Smooth Color Transitions */
+.color-transition {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Optimized Shadow Transitions */
+.shadow-transition {
+  transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth Border Radius Changes */
+.border-radius-transition {
+  transition: border-radius 0.2s ease;
+}
+
+/* Performance Optimizations for Large Lists */
+.virtual-list-item {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Smooth Grid Layout Changes */
+.grid-smooth {
+  transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optimized Form Animations */
+.form-field-animate {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-field-animate:focus {
+  transform: translateZ(0);
+}
+
+/* Smooth Notification Animations */
+.notification-enter {
+  animation: notificationEnter 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes notificationEnter {
+  from {
+    opacity: 0;
+    transform: translateX(100%) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+}
+
+/* Optimized Chart Animations */
+.chart-animate {
+  transition: opacity 0.3s ease;
+}
+
+/* Smooth Data Loading */
+.data-loading {
+  animation: dataLoading 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes dataLoading {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Optimized Scroll Animations */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Reduce Motion for Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .optimized-animation,
+  .smooth-transition,
+  .hover-lift,
+  .scale-on-hover,
+  .fade-in,
+  .slide-in,
+  .loading-pulse,
+  .nav-item-optimized,
+  .card-animate,
+  .btn-optimized,
+  .modal-enter,
+  .table-row-animate,
+  .status-change,
+  .icon-optimized,
+  .progress-smooth,
+  .spinner-optimized,
+  .color-transition,
+  .shadow-transition,
+  .border-radius-transition,
+  .grid-smooth,
+  .form-field-animate,
+  .notification-enter,
+  .chart-animate,
+  .data-loading {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}

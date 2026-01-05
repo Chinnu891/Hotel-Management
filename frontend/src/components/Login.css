@@ -1,0 +1,180 @@
+/* Login Component 3D Animations and Effects */
+
+.login-container {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.login-container:hover {
+  transform: rotateY(5deg) rotateX(5deg);
+  transition: transform 0.3s ease;
+}
+
+/* Floating particles animation */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(100vh) rotate(0deg); 
+    opacity: 0; 
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { 
+    transform: translateY(-100px) rotate(360deg); 
+    opacity: 0; 
+  }
+}
+
+/* Logo floating animation */
+@keyframes logo-float {
+  0%, 100% { transform: translateZ(0px); }
+  50% { transform: translateZ(20px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-logo-float {
+  animation: logo-float 3s ease-in-out infinite;
+}
+
+/* 3D Transform classes */
+.rotate-y-1 {
+  transform: rotateY(5deg);
+}
+
+.rotate-x-1 {
+  transform: rotateX(5deg);
+}
+
+.translate-z-1 {
+  transform: translateZ(10px);
+}
+
+.translate-z-2 {
+  transform: translateZ(20px);
+}
+
+/* Glassmorphism effects */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Input focus effects */
+.input-focus-effect {
+  transition: all 0.3s ease;
+}
+
+.input-focus-effect:focus {
+  transform: translateZ(20px);
+  border-color: #fbbf24;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+/* Button hover effects */
+.btn-hover-effect {
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.btn-hover-effect:hover {
+  transform: translateY(-5px) translateZ(20px);
+  box-shadow: 0 15px 35px rgba(251, 191, 36, 0.4);
+}
+
+.btn-hover-effect:active {
+  transform: translateY(0) translateZ(10px);
+}
+
+/* Shimmer effect for button */
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.shimmer-effect:hover::before {
+  left: 100%;
+}
+
+/* Particle effects */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .login-container {
+    width: 90%;
+    padding: 2rem;
+  }
+  
+  .animate-logo-float {
+    animation: none; /* Disable 3D on mobile for better performance */
+  }
+}
+
+/* Entrance animations */
+.animate-entrance {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.animate-entrance.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced 3D effects */
+.login-container {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Enhanced button states */
+.btn-hover-effect:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Focus states for accessibility */
+.input-focus-effect:focus {
+  outline: none;
+  border-color: #fbbf24;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+}
+
+/* Loading state animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

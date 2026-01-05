@@ -1,0 +1,60 @@
+/* Dashboard Clock Styles */
+.clock-container {
+  @apply flex items-center space-x-3 text-gray-700;
+}
+
+.clock-icon {
+  @apply w-5 h-5 text-gray-500;
+}
+
+.clock-time {
+  @apply text-lg font-mono font-semibold;
+}
+
+.clock-date {
+  @apply text-sm text-gray-500;
+}
+
+.clock-live {
+  @apply inline-block w-2 h-2 bg-green-500 rounded-full ml-2 animate-pulse;
+}
+
+.clock-format-toggle {
+  @apply text-xs text-blue-600 hover:text-blue-800 cursor-pointer ml-2;
+}
+
+.clock-timezone {
+  @apply text-xs text-gray-400 ml-2;
+}
+
+.clock-weather {
+  @apply flex items-center space-x-2 ml-4;
+}
+
+.weather-icon {
+  @apply w-4 h-4;
+}
+
+.weather-temp {
+  @apply text-sm font-medium;
+}
+
+.clock-fullscreen {
+  @apply fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50;
+}
+
+.clock-fullscreen-content {
+  @apply text-center text-white;
+}
+
+.clock-fullscreen-time {
+  @apply text-8xl font-mono font-bold mb-4;
+}
+
+.clock-fullscreen-date {
+  @apply text-2xl text-gray-300 mb-8;
+}
+
+.clock-fullscreen-close {
+  @apply absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer;
+}

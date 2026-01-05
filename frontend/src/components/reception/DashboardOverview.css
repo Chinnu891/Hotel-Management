@@ -1,0 +1,238 @@
+/* Dashboard Overview Styles */
+.dashboard-overview {
+  @apply space-y-6;
+}
+
+.stats-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+}
+
+.stat-card {
+  @apply bg-white rounded-lg shadow p-4 border-l-4;
+}
+
+.stat-card.primary {
+  @apply border-l-blue-500;
+}
+
+.stat-card.success {
+  @apply border-l-green-500;
+}
+
+.stat-card.warning {
+  @apply border-l-yellow-500;
+}
+
+.stat-card.danger {
+  @apply border-l-red-500;
+}
+
+.stat-value {
+  @apply text-3xl font-bold text-gray-900;
+}
+
+.stat-label {
+  @apply text-sm font-medium text-gray-600 mt-2;
+}
+
+.stat-change {
+  @apply text-sm mt-2;
+}
+
+.stat-change.positive {
+  @apply text-green-600;
+}
+
+.stat-change.negative {
+  @apply text-red-600;
+}
+
+.recent-activity {
+  @apply bg-white rounded-lg shadow;
+}
+
+.activity-header {
+  @apply px-6 py-4 border-b border-gray-200;
+}
+
+.activity-title {
+  @apply text-lg font-medium text-gray-900;
+}
+
+.activity-list {
+  @apply divide-y divide-gray-200;
+}
+
+.activity-item {
+  @apply px-6 py-4 flex items-center space-x-3;
+}
+
+.activity-icon {
+  @apply flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center;
+}
+
+.activity-content {
+  @apply flex-1 min-w-0;
+}
+
+.activity-text {
+  @apply text-sm text-gray-900;
+}
+
+.activity-time {
+  @apply text-sm text-gray-500;
+}
+
+.quick-actions {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.action-card {
+  @apply bg-white rounded-lg shadow p-6 text-center hover:shadow-lg transition-shadow cursor-pointer;
+}
+
+.action-icon {
+  @apply w-12 h-12 mx-auto mb-4 text-blue-600;
+}
+
+.action-title {
+  @apply text-lg font-medium text-gray-900 mb-2;
+}
+
+.action-description {
+  @apply text-sm text-gray-600;
+}
+
+.chart-container {
+  @apply bg-white rounded-lg shadow p-6;
+}
+
+.chart-header {
+  @apply flex items-center justify-between mb-6;
+}
+
+.chart-title {
+  @apply text-lg font-medium text-gray-900;
+}
+
+.chart-controls {
+  @apply flex space-x-2;
+}
+
+.chart-control {
+  @apply px-3 py-1 text-sm border border-gray-300 rounded-md hover:bg-gray-50;
+}
+
+.chart-control.active {
+  @apply bg-blue-600 text-white border-blue-600;
+}
+
+/* Horizontal Layout Specific Styles */
+.horizontal-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+}
+
+.horizontal-card {
+  @apply bg-white rounded-lg shadow p-4;
+}
+
+.horizontal-card h3 {
+  @apply text-sm font-medium text-gray-900 mb-3 flex items-center;
+}
+
+.horizontal-card .content {
+  @apply space-y-2;
+}
+
+.horizontal-card .item {
+  @apply flex justify-between items-center py-1;
+}
+
+.horizontal-card .label {
+  @apply text-xs text-gray-600;
+}
+
+.horizontal-card .value {
+  @apply text-xs font-medium;
+}
+
+.horizontal-card .border-top {
+  @apply border-t pt-1;
+}
+
+/* Horizontal Navigation Styles */
+.horizontal-nav {
+  @apply bg-white rounded-lg shadow p-4;
+}
+
+.horizontal-nav-container {
+  @apply flex flex-wrap gap-2 justify-center lg:justify-start;
+}
+
+.horizontal-nav-item {
+  @apply flex items-center px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap;
+}
+
+.horizontal-nav-item.active {
+  @apply bg-blue-100 text-blue-700 border-2 border-blue-600;
+}
+
+.horizontal-nav-item.inactive {
+  @apply text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-2 border-transparent;
+}
+
+.horizontal-nav-item:hover {
+  @apply transform scale-105 transition-transform;
+}
+
+/* Responsive adjustments for horizontal layout */
+@media (max-width: 1024px) {
+  .horizontal-grid {
+    @apply grid-cols-1 md:grid-cols-2;
+  }
+  
+  .horizontal-nav-container {
+    @apply justify-center;
+  }
+}
+
+@media (max-width: 768px) {
+  .horizontal-grid {
+    @apply grid-cols-1;
+  }
+  
+  .stats-grid {
+    @apply grid-cols-1 md:grid-cols-2;
+  }
+  
+  .horizontal-nav-item {
+    @apply px-3 py-1 text-xs;
+  }
+  
+  .horizontal-nav-container {
+    @apply gap-1;
+  }
+}
+
+@media (max-width: 640px) {
+  .horizontal-nav-container {
+    @apply flex-col items-center;
+  }
+  
+  .horizontal-nav-item {
+    @apply w-full justify-center;
+  }
+}
+
+/* Compact spacing for horizontal layout */
+.compact-spacing {
+  @apply space-y-4;
+}
+
+.compact-padding {
+  @apply p-4;
+}
+
+.compact-margin {
+  @apply mb-4;
+}

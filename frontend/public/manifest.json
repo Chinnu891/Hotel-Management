@@ -1,0 +1,35 @@
+{
+  "short_name": "SV ROYAL",
+  "name": "SV ROYAL LUXURY ROOMS - Hotel Management System",
+  "description": "Professional hotel management system for SV ROYAL LUXURY ROOMS",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#B8860B",
+  "background_color": "#000000",
+  "orientation": "portrait-primary",
+  "categories": ["business", "travel", "hospitality"],
+  "lang": "en"
+}

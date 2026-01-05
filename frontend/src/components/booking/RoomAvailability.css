@@ -1,0 +1,723 @@
+/* RoomAvailability.css - Mobile Responsive Styles */
+
+/* Mobile-specific styles for both admin and reception contexts */
+@media (max-width: 768px) {
+  /* General mobile container adjustments */
+  .min-h-screen.bg-gray-50 {
+    padding: 0 !important;
+  }
+  
+  .max-w-7xl.mx-auto.p-6 {
+    padding: 0.75rem !important;
+    max-width: 100% !important;
+  }
+  
+  .bg-white.rounded-lg.shadow-lg.p-6 {
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  /* Header adjustments */
+  h1.text-2xl {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .flex.justify-between.items-center.mb-6 {
+    flex-direction: row !important;
+    align-items: center !important;
+    margin-bottom: 1.5rem !important;
+    gap: 0.75rem !important;
+  }
+  
+  /* Search filters mobile layout */
+  .bg-gray-50.rounded-lg.p-3 {
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .flex.flex-wrap.gap-3.justify-center {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  
+  .w-48 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  /* Input and select fields mobile */
+  input[type="date"],
+  select {
+    padding: 0.875rem !important;
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    min-height: 48px !important; /* Better touch target */
+    border-radius: 0.5rem !important;
+  }
+  
+  label.block.text-xs {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.5rem !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Filter buttons section mobile */
+  .mt-4.flex.justify-between.items-center {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: stretch !important;
+  }
+  
+  .mt-4.flex.justify-between.items-center > button {
+    width: 100% !important;
+    padding: 0.875rem 1rem !important;
+    font-size: 1rem !important;
+    min-height: 48px !important;
+    border-radius: 0.5rem !important;
+  }
+  
+  .flex.space-x-2 {
+    width: 100% !important;
+    gap: 0.5rem !important;
+  }
+  
+  .flex.space-x-2 button {
+    flex: 1 !important;
+    padding: 0.875rem 1rem !important;
+    font-size: 0.9375rem !important;
+    min-height: 48px !important;
+    border-radius: 0.5rem !important;
+  }
+  
+  /* Stats display mobile */
+  .bg-blue-50.border.border-blue-200.rounded-lg.p-4 {
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+  }
+  
+  .bg-blue-50 h3.text-lg {
+    font-size: 1.125rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .grid.grid-cols-2.md\\:grid-cols-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+  
+  .grid.grid-cols-2.md\\:grid-cols-6 > div {
+    padding: 0.75rem !important;
+    background: white !important;
+    border-radius: 0.5rem !important;
+    border: 1px solid #e5e7eb !important;
+  }
+  
+  .grid.grid-cols-2.md\\:grid-cols-6 .text-lg {
+    font-size: 1.25rem !important;
+  }
+  
+  .grid.grid-cols-2.md\\:grid-cols-6 .text-xs {
+    font-size: 0.75rem !important;
+    margin-top: 0.25rem !important;
+  }
+  
+  /* Room cards mobile layout */
+  .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .border.rounded-lg {
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+    margin-bottom: 0 !important;
+  }
+  
+  .border.rounded-lg h4 {
+    font-size: 1.125rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .border.rounded-lg p {
+    font-size: 0.9375rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .border.rounded-lg .text-sm {
+    font-size: 0.875rem !important;
+  }
+  
+  .border.rounded-lg .text-xs {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Status badges mobile */
+  .inline-block.text-xs {
+    font-size: 0.75rem !important;
+    padding: 0.375rem 0.75rem !important;
+    border-radius: 0.375rem !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Book Now button mobile */
+  .w-full.px-3.py-1 {
+    padding: 0.875rem 1rem !important;
+    font-size: 0.9375rem !important;
+    min-height: 48px !important;
+    border-radius: 0.5rem !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Floor headers mobile */
+  .border-t.border-b {
+    padding: 1rem 0 !important;
+    margin: 1.5rem 0 1rem 0 !important;
+  }
+  
+  .border-t.border-b h4 {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+  }
+  
+  /* Error and loading states mobile */
+  .bg-red-50.border.border-red-200.rounded-md.p-4,
+  .bg-green-50,
+  .bg-purple-50 {
+    padding: 1rem !important;
+    border-radius: 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .bg-red-50 p.text-sm {
+    font-size: 0.9375rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Loading spinner mobile */
+  .text-center.py-8 {
+    padding: 2rem 1rem !important;
+  }
+  
+  .animate-spin.rounded-full.h-12.w-12 {
+    width: 3rem !important;
+    height: 3rem !important;
+  }
+  
+  .text-center.py-8 p {
+    font-size: 0.9375rem !important;
+    margin-top: 1rem !important;
+  }
+  
+  /* Section headers mobile */
+  h3.text-lg.font-semibold {
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Admin-specific mobile styles */
+  .admin-room-availability {
+    padding: 0.5rem !important;
+  }
+  
+  .admin-room-availability .max-w-7xl {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .admin-room-availability .bg-white {
+    border-radius: 0.5rem !important;
+    padding: 1rem !important;
+    margin: 0 !important;
+  }
+  
+  /* Header adjustments */
+  .admin-room-availability h1 {
+    font-size: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-room-availability .flex.justify-between {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  
+  /* Search filters mobile layout */
+  .admin-room-availability .flex.flex-wrap {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: center !important;
+  }
+  
+  .admin-room-availability .w-48 {
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+  
+  .admin-room-availability .bg-gray-50 {
+    padding: 0.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Button adjustments - Mobile only */
+  .admin-room-availability .flex.justify-between {
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+  }
+  
+  .admin-room-availability .flex.space-x-2 {
+    flex-direction: row !important;
+    gap: 0.5rem !important;
+    justify-content: center !important;
+  }
+  
+  .admin-room-availability .flex.justify-between button,
+  .admin-room-availability .flex.space-x-2 button {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.875rem !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+  
+  /* Stats display mobile */
+  .admin-room-availability .grid.grid-cols-2.md\\:grid-cols-6 {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+  
+  .admin-room-availability .bg-blue-50 {
+    padding: 0.75rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .admin-room-availability .bg-blue-50 h3 {
+    font-size: 1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .admin-room-availability .bg-blue-50 .text-lg {
+    font-size: 1.125rem !important;
+  }
+  
+  .admin-room-availability .bg-blue-50 .text-xs {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Room cards mobile layout */
+  .admin-room-availability .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+  
+  .admin-room-availability .border.rounded-lg {
+    padding: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .admin-room-availability .border.rounded-lg h4 {
+    font-size: 1rem !important;
+  }
+  
+  .admin-room-availability .border.rounded-lg p {
+    font-size: 0.875rem !important;
+  }
+  
+  .admin-room-availability .border.rounded-lg .text-sm {
+    font-size: 0.75rem !important;
+  }
+  
+  .admin-room-availability .border.rounded-lg .text-xs {
+    font-size: 0.625rem !important;
+  }
+  
+  /* Status badges mobile */
+  .admin-room-availability .inline-block.text-xs {
+    font-size: 0.625rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+  
+  /* Book Now button mobile */
+  .admin-room-availability .w-full.px-3.py-1 {
+    padding: 0.5rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Floor headers mobile */
+  .admin-room-availability .border-t.border-b {
+    padding: 0.5rem 0 !important;
+  }
+  
+  .admin-room-availability .border-t.border-b h4 {
+    font-size: 1rem !important;
+  }
+  
+  /* Guest details modal mobile - applies to all contexts */
+  .fixed.inset-0.bg-black.bg-opacity-50.flex.items-center.justify-center {
+    padding: 0 !important;
+    align-items: flex-end !important;
+    justify-content: flex-start !important;
+  }
+  
+  /* Target modal container more specifically - override all margin classes */
+  .fixed.inset-0 .bg-white.rounded-lg.p-6,
+  .fixed.inset-0 .bg-white.rounded-lg,
+  .fixed.inset-0 .max-w-lg.bg-white,
+  .fixed.inset-0 div.bg-white.rounded-lg {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    border-radius: 1.25rem 1.25rem 0 0 !important;
+    max-height: 85vh !important;
+    animation: modalSlideUp 0.3s ease-out !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15) !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* Override mx-4, mx-auto, and any margin classes specifically */
+  .fixed.inset-0 .max-w-lg.w-full.mx-4,
+  .fixed.inset-0 .max-w-lg.w-full.mx-auto,
+  .fixed.inset-0 div[class*="mx-"] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  @keyframes modalSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fixed.inset-0 .bg-white.rounded-lg.p-6 {
+    padding: 0 !important;
+  }
+  
+  .fixed.inset-0 .bg-white.rounded-lg > .flex.justify-between.items-center.mb-4 {
+    padding: 1.125rem 1rem 1rem 1rem !important;
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    position: sticky !important;
+    top: 0 !important;
+    background: white !important;
+    z-index: 10 !important;
+  }
+  
+  .fixed.inset-0 .bg-white.rounded-lg > .space-y-4,
+  .fixed.inset-0 .bg-white.rounded-lg > div:not(.flex.justify-between) {
+    padding: 1.125rem 1rem 1.5rem 1rem !important;
+    max-height: calc(85vh - 80px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  
+  /* Loading state in modal */
+  .fixed.inset-0 .text-center.py-4 {
+    padding: 2rem 1rem !important;
+  }
+  
+  .fixed.inset-0 h3.text-lg {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    line-height: 1.4 !important;
+  }
+  
+  .grid.grid-cols-1.md\\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  
+  .grid.grid-cols-1.md\\:grid-cols-2 .text-sm {
+    font-size: 0.9375rem !important;
+  }
+  
+  /* Close button mobile */
+  .fixed.inset-0 button.text-gray-400 {
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+    min-width: 2.75rem !important;
+    min-height: 2.75rem !important;
+    font-size: 1.75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    background: #f3f4f6 !important;
+    color: #4b5563 !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .fixed.inset-0 button.text-gray-400:hover {
+    background: #e5e7eb !important;
+    color: #374151 !important;
+  }
+  
+  /* Modal content sections mobile */
+  .space-y-4 > .bg-blue-50.rounded-lg,
+  .space-y-4 > .bg-green-50.rounded-lg,
+  .space-y-4 > .bg-purple-50.rounded-lg,
+  .space-y-4 > .bg-gray-50.rounded-lg {
+    padding: 1.125rem !important;
+    margin-bottom: 1rem !important;
+    border-radius: 0.75rem !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  }
+  
+  .bg-blue-50 h4.font-semibold,
+  .bg-green-50 h4.font-semibold,
+  .bg-purple-50 h4.font-semibold,
+  .bg-gray-50 h4.font-semibold {
+    font-size: 1.0625rem !important;
+    margin-bottom: 1rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+  }
+  
+  .bg-blue-50 .grid.gap-3 > div,
+  .bg-green-50 .grid.gap-3 > div,
+  .bg-purple-50 .grid.gap-3 > div,
+  .bg-gray-50 .grid.gap-3 > div {
+    padding: 0.625rem 0 !important;
+    font-size: 0.9375rem !important;
+    line-height: 1.7 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+  }
+  
+  .bg-blue-50 .font-medium,
+  .bg-green-50 .font-medium,
+  .bg-purple-50 .font-medium,
+  .bg-gray-50 .font-medium {
+    font-weight: 600 !important;
+    color: #374151 !important;
+    margin-bottom: 0.125rem !important;
+    font-size: 0.875rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.025em !important;
+  }
+  
+  .bg-blue-50 .ml-2,
+  .bg-green-50 .ml-2,
+  .bg-purple-50 .ml-2,
+  .bg-gray-50 .ml-2 {
+    margin-left: 0 !important;
+    color: #111827 !important;
+    font-weight: 500 !important;
+    font-size: 0.9375rem !important;
+    word-break: break-word !important;
+  }
+  
+  /* Booking type badge mobile */
+  .inline-block.px-3.py-1.rounded-full {
+    padding: 0.5rem 0.875rem !important;
+    font-size: 0.8125rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  /* Status badges in modal */
+  .bg-green-50 .px-2.py-1.rounded,
+  .bg-blue-50 .px-2.py-1.rounded {
+    padding: 0.375rem 0.625rem !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    margin-left: 0.5rem !important;
+  }
+  
+  /* Admin-specific modal styles */
+  .admin-room-availability .fixed.inset-0 .max-w-lg {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .admin-room-availability .fixed.inset-0 .p-6 {
+    padding: 1rem !important;
+  }
+  
+  .admin-room-availability .grid.grid-cols-1.md\\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Error and loading states mobile */
+  .admin-room-availability .bg-red-50,
+  .admin-room-availability .bg-green-50,
+  .admin-room-availability .bg-purple-50,
+  .admin-room-availability .bg-gray-50 {
+    padding: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .admin-room-availability .bg-red-50 h4,
+  .admin-room-availability .bg-green-50 h4,
+  .admin-room-availability .bg-purple-50 h4,
+  .admin-room-availability .bg-gray-50 h4 {
+    font-size: 0.875rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Force refresh button mobile */
+  .admin-room-availability .px-4.py-2.bg-blue-600 {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+    width: 100% !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Pre-booked details mobile */
+  .admin-room-availability .bg-white.border-2 {
+    padding: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .admin-room-availability .bg-white.border-2 p {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Checkout time info mobile */
+  .admin-room-availability .bg-red-50.border {
+    padding: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .admin-room-availability .bg-red-50.border p {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Additional mobile improvements for smaller screens */
+@media (max-width: 480px) {
+  .max-w-7xl.mx-auto.p-6 {
+    padding: 0.5rem !important;
+  }
+  
+  .bg-white.rounded-lg.shadow-lg.p-6 {
+    padding: 0.875rem !important;
+  }
+  
+  h1.text-2xl {
+    font-size: 1.375rem !important;
+  }
+  
+  .bg-gray-50.rounded-lg.p-3 {
+    padding: 0.875rem !important;
+  }
+  
+  .grid.grid-cols-2.md\\:grid-cols-6 {
+    gap: 0.5rem !important;
+  }
+  
+  .grid.grid-cols-2.md\\:grid-cols-6 > div {
+    padding: 0.625rem !important;
+  }
+  
+  .border.rounded-lg {
+    padding: 0.875rem !important;
+  }
+  
+  .w-full.px-3.py-1 {
+    padding: 0.75rem 0.875rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Modal improvements for small screens */
+  .fixed.inset-0 .bg-white.rounded-lg > .flex.justify-between.items-center.mb-4 {
+    padding: 1rem 0.875rem 0.875rem 0.875rem !important;
+  }
+  
+  .fixed.inset-0 .bg-white.rounded-lg > .space-y-4,
+  .fixed.inset-0 .bg-white.rounded-lg > div:not(.flex.justify-between) {
+    padding: 1rem 0.875rem 1.25rem 0.875rem !important;
+  }
+  
+  .fixed.inset-0 h3.text-lg {
+    font-size: 1.125rem !important;
+  }
+  
+  .fixed.inset-0 button.text-gray-400 {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    min-width: 2.5rem !important;
+    min-height: 2.5rem !important;
+    font-size: 1.5rem !important;
+  }
+  
+  .space-y-4 > .bg-blue-50.rounded-lg,
+  .space-y-4 > .bg-green-50.rounded-lg,
+  .space-y-4 > .bg-purple-50.rounded-lg,
+  .space-y-4 > .bg-gray-50.rounded-lg {
+    padding: 1rem !important;
+  }
+  
+  .bg-blue-50 h4.font-semibold,
+  .bg-green-50 h4.font-semibold,
+  .bg-purple-50 h4.font-semibold,
+  .bg-gray-50 h4.font-semibold {
+    font-size: 1rem !important;
+    margin-bottom: 0.875rem !important;
+  }
+  
+  .bg-blue-50 .grid.gap-3 > div,
+  .bg-green-50 .grid.gap-3 > div,
+  .bg-purple-50 .grid.gap-3 > div,
+  .bg-gray-50 .grid.gap-3 > div {
+    padding: 0.5rem 0 !important;
+    font-size: 0.875rem !important;
+  }
+  
+  .bg-blue-50 .font-medium,
+  .bg-green-50 .font-medium,
+  .bg-purple-50 .font-medium,
+  .bg-gray-50 .font-medium {
+    font-size: 0.8125rem !important;
+  }
+  
+  .bg-blue-50 .ml-2,
+  .bg-green-50 .ml-2,
+  .bg-purple-50 .ml-2,
+  .bg-gray-50 .ml-2 {
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .grid.grid-cols-2.md\\:grid-cols-6 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .admin-room-availability .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .admin-room-availability .grid.grid-cols-1.md\\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .admin-room-availability .grid.grid-cols-2.md\\:grid-cols-6 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Ensure desktop view remains unchanged */
+@media (min-width: 1025px) {
+  .admin-room-availability {
+    /* Desktop styles remain as original */
+  }
+}

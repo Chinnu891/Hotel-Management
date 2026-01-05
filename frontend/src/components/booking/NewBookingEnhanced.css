@@ -1,0 +1,253 @@
+/* Enhanced 3D Animations and Styling for NewBookingEnhanced */
+
+/* 3D Card Effects */
+.card-3d {
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-3d:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.float-animation {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Enhanced Button Styles */
+.btn-3d {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateZ(0);
+}
+
+.btn-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-3d:hover::before {
+    left: 100%;
+}
+
+.btn-3d:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Step Indicator Enhancements */
+.step-indicator {
+    position: relative;
+    z-index: 10;
+}
+
+.step-indicator .step-circle {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-indicator .step-circle:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.step-indicator .step-line {
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Form Input Enhancements */
+.floating-input {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.floating-input:focus-within {
+    transform: translateY(-2px);
+}
+
+.floating-input input:focus {
+    box-shadow: 
+        0 0 0 3px rgba(59, 130, 246, 0.1),
+        0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Room Card Enhancements */
+.room-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.room-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.room-card:hover::before {
+    left: 100%;
+}
+
+.room-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+.room-card.selected {
+    border-color: #3b82f6;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    transform: scale(1.02);
+}
+
+/* Loading Animation */
+.loading-3d {
+    position: relative;
+    perspective: 1000px;
+}
+
+.loading-3d .spinner {
+    animation: spin3d 1.5s linear infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes spin3d {
+    0% {
+        transform: rotateY(0deg) rotateX(0deg);
+    }
+    100% {
+        transform: rotateY(360deg) rotateX(360deg);
+    }
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+    .card-3d:hover {
+        transform: translateY(-4px) rotateX(1deg) rotateY(1deg);
+    }
+    
+    .room-card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .card-3d {
+        background: #1f2937;
+        border-color: #374151;
+    }
+    
+    .card-3d:hover {
+        box-shadow: 
+            0 25px 50px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            0 0 0 4px rgba(59, 130, 246, 0.2);
+    }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+    .card-3d,
+    .btn-3d,
+    .step-indicator .step-circle,
+    .floating-input,
+    .room-card {
+        transition: none;
+        animation: none;
+    }
+    
+    .card-3d:hover,
+    .btn-3d:hover,
+    .room-card:hover {
+        transform: none;
+    }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Focus Indicators for Accessibility */
+.focus-visible:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+    .card-3d,
+    .btn-3d,
+    .step-indicator {
+        box-shadow: none;
+        transform: none;
+    }
+    
+    .no-print {
+        display: none;
+    }
+}

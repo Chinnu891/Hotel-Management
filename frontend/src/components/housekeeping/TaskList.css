@@ -1,0 +1,473 @@
+.task-list-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Filters Section */
+.filters-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.filters-section h3 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 1.1rem;
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: white;
+}
+
+.filter-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Results Summary */
+.results-summary {
+    padding: 15px 20px;
+    background: #e9ecef;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Task List */
+.task-list {
+    padding: 20px;
+}
+
+.task-item {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.task-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.task-item.priority-urgent {
+    border-left: 4px solid #dc2626;
+}
+
+.task-item.priority-high {
+    border-left: 4px solid #ef4444;
+}
+
+.task-item.priority-medium {
+    border-left: 4px solid #f59e0b;
+}
+
+.task-item.priority-low {
+    border-left: 4px solid #10b981;
+}
+
+.task-header {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fafbfc;
+    transition: background-color 0.2s;
+}
+
+.task-header:hover {
+    background: #f1f3f4;
+}
+
+.task-main-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.task-type-badge {
+    background: #667eea;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.task-room {
+    font-weight: 600;
+    color: #2563eb;
+    font-size: 1rem;
+}
+
+.task-schedule {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.task-status-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.status-select {
+    padding: 8px 12px;
+    border: 2px solid;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: white;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+.priority-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Task Details */
+.task-details {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e9ecef;
+}
+
+.task-description {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    line-height: 1.5;
+    color: #495057;
+}
+
+.task-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.meta-item {
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.meta-item strong {
+    color: #495057;
+}
+
+/* Checklist Section */
+.checklist-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.checklist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.completion-percentage {
+    background: #10b981;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.checklist-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981, #059669);
+    transition: width 0.3s ease;
+}
+
+.checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+}
+
+.checklist-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d1d5db;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: white;
+    transition: all 0.2s;
+}
+
+.checklist-checkbox.completed {
+    background: #10b981;
+    border-color: #10b981;
+}
+
+.checklist-text {
+    font-size: 0.9rem;
+    color: #374151;
+}
+
+/* Task Actions */
+.task-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    min-width: auto;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+.page-info {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Loading and Error States */
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.error-message {
+    background: #fdf2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 20px;
+    text-align: center;
+    border-radius: 6px;
+    margin: 20px;
+}
+
+.retry-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.retry-btn:hover {
+    background: #b91c1c;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .filters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+    
+    .task-main-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .task-status-section {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-end;
+    }
+    
+    .task-meta {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .filters-section {
+        padding: 15px;
+    }
+    
+    .filters-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .task-list {
+        padding: 15px;
+    }
+    
+    .task-header {
+        padding: 15px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .task-main-info {
+        gap: 8px;
+    }
+    
+    .task-status-section {
+        align-items: stretch;
+    }
+    
+    .status-select {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .task-details {
+        padding: 15px;
+    }
+    
+    .task-actions {
+        flex-direction: column;
+    }
+    
+    .btn-sm {
+        width: 100%;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .filters-section {
+        padding: 10px;
+    }
+    
+    .filters-section h3 {
+        font-size: 1rem;
+    }
+    
+    .task-list {
+        padding: 10px;
+    }
+    
+    .task-header {
+        padding: 12px;
+    }
+    
+    .task-type-badge {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .task-room {
+        font-size: 0.9rem;
+    }
+    
+    .task-schedule {
+        font-size: 0.8rem;
+    }
+    
+    .priority-badge {
+        padding: 4px 8px;
+        font-size: 0.65rem;
+    }
+    
+    .task-details {
+        padding: 12px;
+    }
+    
+    .checklist-section {
+        padding: 12px;
+    }
+    
+    .checklist-item {
+        padding: 6px;
+    }
+    
+    .checklist-checkbox {
+        width: 18px;
+        height: 18px;
+        font-size: 10px;
+    }
+}
