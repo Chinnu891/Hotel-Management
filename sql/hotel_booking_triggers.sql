@@ -1,7 +1,21 @@
 -- Hotel Booking System Triggers
 -- Database: if0_40831329_hotel_management
--- Import this file into phpMyAdmin to create all necessary triggers
--- Note: Ensure your database user has TRIGGER privileges
+-- 
+-- IMPORTANT: Triggers are commented out by default to avoid permission errors
+-- If you have CREATE TRIGGER privileges, uncomment the triggers below
+-- 
+-- NOTE: Triggers are OPTIONAL - the application code handles all logic
+-- The system will work perfectly fine without triggers
+--
+-- IMPORTANT: Run sql/hotel_management.sql first to create tables and structure
+-- Then run this file (uncommented) to create all triggers if you have privileges
+
+USE `if0_40831329_hotel_management`;
+
+/*
+-- ============================================================
+-- TRIGGERS SECTION - Uncomment if you have CREATE TRIGGER privileges
+-- ============================================================
 
 -- Trigger 1: Calculate remaining amount on insert
 DROP TRIGGER IF EXISTS `calculate_remaining_amount_on_insert`;
@@ -322,3 +336,8 @@ CREATE TRIGGER `update_room_status_on_checkout` AFTER UPDATE ON `bookings`
         END IF;
     END IF;
 END;
+
+-- ============================================================
+-- END OF TRIGGERS SECTION
+-- ============================================================
+*/

@@ -6,6 +6,17 @@
 -- Generation Time: Aug 29, 2025 at 07:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
+--
+-- Hotel Management System Database
+-- Complete database structure for XAMPP/MySQL/MariaDB
+--
+-- IMPORTANT: This file can be imported into any existing database
+-- No database name is required - select your database first in phpMyAdmin
+-- or use: USE `your_database_name`; before importing
+--
+-- To create a new database, uncomment the lines below:
+-- CREATE DATABASE IF NOT EXISTS `hotel_management` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+-- USE `hotel_management`;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -17,14 +28,86 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
--- Use the database
+--
+-- Database: (use any existing database)
+--
+
+-- --------------------------------------------------------
 USE `if0_40831329_hotel_management`;
+--
+-- Stored Procedures
+-- NOTE: Procedures are commented out by default to avoid permission issues
+-- Uncomment the section below if you have CREATE PROCEDURE privileges
+-- Or create them separately after importing tables and views
+--
+
+/*
+DELIMITER $$
 
 --
--- Database: `if0_40831329_hotel_management`
+-- Procedure: CreateGuest
+-- Description: Creates a new guest or retrieves existing guest by email
 --
+CREATE PROCEDURE `CreateGuest` (
+    IN `p_first_name` VARCHAR(50), 
+    IN `p_last_name` VARCHAR(50), 
+    IN `p_email` VARCHAR(100), 
+    IN `p_phone` VARCHAR(20), 
+    IN `p_address` TEXT, 
+    IN `p_id_proof_type` ENUM('passport','driving_license','national_id','other'), 
+    IN `p_id_proof_number` VARCHAR(100), 
+    IN `p_company_name` VARCHAR(255), 
+    IN `p_gst_number` VARCHAR(50)
+) BEGIN
+    DECLARE guest_id INT;
+    
+    -- Check if guest already exists by email
+    SELECT id INTO guest_id FROM guests WHERE email = p_email LIMIT 1;
+    
+    IF guest_id IS NULL THEN
+        -- Create new guest
+        INSERT INTO guests (first_name, last_name, email, phone, address, id_proof_type, id_proof_number, company_name, gst_number)
+        VALUES (p_first_name, p_last_name, p_email, p_phone, p_address, p_id_proof_type, p_id_proof_number, p_company_name, p_gst_number);
+        
+        SET guest_id = LAST_INSERT_ID();
+    END IF;
+    
+    SELECT guest_id as id, 'Guest created/retrieved successfully' as message;
+END$$
 
+--
+-- Procedure: SearchGuests
+-- Description: Searches guests by various criteria (name, email, phone, id_proof, company)
+--
+CREATE PROCEDURE `SearchGuests` (
+    IN `p_search_term` VARCHAR(100), 
+    IN `p_search_type` ENUM('name','email','phone','id_proof','company')
+) BEGIN
+    DECLARE search_sql TEXT;
+    
+    SET search_sql = CASE p_search_type
+        WHEN 'name' THEN 'SELECT * FROM guests WHERE first_name LIKE CONCAT("%", ?, "%") OR last_name LIKE CONCAT("%", ?, "%")'
+        WHEN 'email' THEN 'SELECT * FROM guests WHERE email LIKE CONCAT("%", ?, "%")'
+        WHEN 'phone' THEN 'SELECT * FROM guests WHERE phone LIKE CONCAT("%", ?, "%")'
+        WHEN 'id_proof' THEN 'SELECT * FROM guests WHERE id_proof_number LIKE CONCAT("%", ?, "%")'
+        WHEN 'company' THEN 'SELECT * FROM guests WHERE company_name LIKE CONCAT("%", ?, "%")'
+        ELSE 'SELECT * FROM guests'
+    END;
+    
+    SET @sql = search_sql;
+    PREPARE stmt FROM @sql;
+    
+    IF p_search_type = 'name' THEN
+        EXECUTE stmt USING p_search_term, p_search_term;
+    ELSE
+        EXECUTE stmt USING p_search_term;
+    END IF;
+    
+    DEALLOCATE PREPARE stmt;
+END$$
 
+DELIMITER ;
+*/
 
 -- --------------------------------------------------------
 
@@ -1506,72 +1589,72 @@ INSERT INTO `websocket_notifications` (`id`, `channel`, `data`, `created_at`, `i
 --
 -- Structure for view `booking_payment_summary`
 --
-DROP TABLE IF EXISTS `booking_payment_summary`;
+DROP VIEW IF EXISTS `booking_payment_summary`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `booking_payment_summary`  AS SELECT `b`.`id` AS `id`, `b`.`booking_reference` AS `booking_reference`, `b`.`guest_id` AS `guest_id`, `b`.`room_id` AS `room_id`, `b`.`total_amount` AS `total_amount`, `b`.`paid_amount` AS `paid_amount`, `b`.`remaining_amount` AS `remaining_amount`, `b`.`payment_status` AS `payment_status`, `b`.`owner_referenced` AS `owner_referenced`, `b`.`payment_type` AS `payment_type`, `b`.`status` AS `booking_status`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`phone` AS `phone`, `b`.`room_number` AS `room_number`, `rt`.`name` AS `room_type_name`, CASE WHEN `b`.`remaining_amount` > 0 THEN 'Has Outstanding Balance' WHEN `b`.`paid_amount` = 0 THEN 'Unpaid' WHEN `b`.`paid_amount` < `b`.`total_amount` THEN 'Partially Paid' ELSE 'Fully Paid' END AS `payment_summary` FROM (((`bookings` `b` join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) join `rooms` `r` on(`b`.`room_id` = `r`.`id`)) join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `booking_payment_summary`  AS SELECT `b`.`id` AS `id`, `b`.`booking_reference` AS `booking_reference`, `b`.`guest_id` AS `guest_id`, `b`.`room_id` AS `room_id`, `b`.`total_amount` AS `total_amount`, `b`.`paid_amount` AS `paid_amount`, `b`.`remaining_amount` AS `remaining_amount`, `b`.`payment_status` AS `payment_status`, `b`.`owner_referenced` AS `owner_referenced`, `b`.`payment_type` AS `payment_type`, `b`.`status` AS `booking_status`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`phone` AS `phone`, `b`.`room_number` AS `room_number`, `rt`.`name` AS `room_type_name`, CASE WHEN `b`.`remaining_amount` > 0 THEN 'Has Outstanding Balance' WHEN `b`.`paid_amount` = 0 THEN 'Unpaid' WHEN `b`.`paid_amount` < `b`.`total_amount` THEN 'Partially Paid' ELSE 'Fully Paid' END AS `payment_summary` FROM (((`bookings` `b` join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) join `rooms` `r` on(`b`.`room_id` = `r`.`id`)) join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) ;
 
 -- --------------------------------------------------------
 
 --
 -- Structure for view `booking_summary`
 --
-DROP TABLE IF EXISTS `booking_summary`;
+DROP VIEW IF EXISTS `booking_summary`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `booking_summary`  AS SELECT `b`.`id` AS `id`, `b`.`booking_reference` AS `booking_reference`, concat(`g`.`first_name`,' ',`g`.`last_name`) AS `guest_name`, `g`.`phone` AS `phone`, `g`.`email` AS `email`, `b`.`room_number` AS `room_number`, `rt`.`name` AS `room_type`, `b`.`check_in_date` AS `check_in_date`, `b`.`check_out_date` AS `check_out_date`, `b`.`number_of_days` AS `number_of_days`, `b`.`tariff` AS `tariff`, `b`.`total_amount` AS `total_amount`, `b`.`status` AS `status`, `b`.`booking_source` AS `booking_source`, `b`.`plan_type` AS `plan_type`, `b`.`created_at` AS `created_at`, `cb`.`company_name` AS `company_name`, `cb`.`gst_number` AS `gst_number` FROM ((((`bookings` `b` join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) join `rooms` `r` on(`b`.`room_number` = `r`.`room_number`)) join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) left join `corporate_bookings` `cb` on(`b`.`id` = `cb`.`booking_id`)) ORDER BY `b`.`created_at` DESC ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `booking_summary`  AS SELECT `b`.`id` AS `id`, `b`.`booking_reference` AS `booking_reference`, concat(`g`.`first_name`,' ',`g`.`last_name`) AS `guest_name`, `g`.`phone` AS `phone`, `g`.`email` AS `email`, `b`.`room_number` AS `room_number`, `rt`.`name` AS `room_type`, `b`.`check_in_date` AS `check_in_date`, `b`.`check_out_date` AS `check_out_date`, `b`.`number_of_days` AS `number_of_days`, `b`.`tariff` AS `tariff`, `b`.`total_amount` AS `total_amount`, `b`.`status` AS `status`, `b`.`booking_source` AS `booking_source`, `b`.`plan_type` AS `plan_type`, `b`.`created_at` AS `created_at`, `cb`.`company_name` AS `company_name`, `cb`.`gst_number` AS `gst_number` FROM ((((`bookings` `b` join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) join `rooms` `r` on(`b`.`room_number` = `r`.`room_number`)) join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) left join `corporate_bookings` `cb` on(`b`.`id` = `cb`.`booking_id`)) ORDER BY `b`.`created_at` DESC ;
 
 -- --------------------------------------------------------
 
 --
 -- Structure for view `guest_booking_view`
 --
-DROP TABLE IF EXISTS `guest_booking_view`;
+DROP VIEW IF EXISTS `guest_booking_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `guest_booking_view`  AS SELECT `b`.`id` AS `booking_id`, `b`.`booking_reference` AS `booking_reference`, `b`.`room_number` AS `room_number`, `b`.`check_in_date` AS `check_in_date`, `b`.`check_out_date` AS `check_out_date`, `b`.`status` AS `booking_status`, `b`.`total_amount` AS `total_amount`, `b`.`paid_amount` AS `paid_amount`, `b`.`remaining_amount` AS `remaining_amount`, `b`.`payment_status` AS `payment_status`, `g`.`id` AS `guest_id`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, concat(`g`.`first_name`,' ',`g`.`last_name`) AS `full_name`, `g`.`email` AS `email`, `g`.`phone` AS `phone`, `g`.`address` AS `address`, `g`.`id_proof_type` AS `id_proof_type`, `g`.`id_proof_number` AS `id_proof_number`, `g`.`company_name` AS `guest_company`, `g`.`gst_number` AS `guest_gst`, `cb`.`company_name` AS `booking_company`, `cb`.`gst_number` AS `booking_gst`, `cb`.`contact_person` AS `contact_person`, `cb`.`contact_phone` AS `contact_phone`, `cb`.`contact_email` AS `contact_email`, `cb`.`billing_address` AS `billing_address`, `b`.`created_at` AS `booking_created_at`, `g`.`created_at` AS `guest_created_at` FROM ((`bookings` `b` left join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) left join `corporate_bookings` `cb` on(`b`.`id` = `cb`.`booking_id`)) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `guest_booking_view`  AS SELECT `b`.`id` AS `booking_id`, `b`.`booking_reference` AS `booking_reference`, `b`.`room_number` AS `room_number`, `b`.`check_in_date` AS `check_in_date`, `b`.`check_out_date` AS `check_out_date`, `b`.`status` AS `booking_status`, `b`.`total_amount` AS `total_amount`, `b`.`paid_amount` AS `paid_amount`, `b`.`remaining_amount` AS `remaining_amount`, `b`.`payment_status` AS `payment_status`, `g`.`id` AS `guest_id`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, concat(`g`.`first_name`,' ',`g`.`last_name`) AS `full_name`, `g`.`email` AS `email`, `g`.`phone` AS `phone`, `g`.`address` AS `address`, `g`.`id_proof_type` AS `id_proof_type`, `g`.`id_proof_number` AS `id_proof_number`, `g`.`company_name` AS `guest_company`, `g`.`gst_number` AS `guest_gst`, `cb`.`company_name` AS `booking_company`, `cb`.`gst_number` AS `booking_gst`, `cb`.`contact_person` AS `contact_person`, `cb`.`contact_phone` AS `contact_phone`, `cb`.`contact_email` AS `contact_email`, `cb`.`billing_address` AS `billing_address`, `b`.`created_at` AS `booking_created_at`, `g`.`created_at` AS `guest_created_at` FROM ((`bookings` `b` left join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) left join `corporate_bookings` `cb` on(`b`.`id` = `cb`.`booking_id`)) ;
 
 -- --------------------------------------------------------
 
 --
 -- Structure for view `guest_corporate_view`
 --
-DROP TABLE IF EXISTS `guest_corporate_view`;
+DROP VIEW IF EXISTS `guest_corporate_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `guest_corporate_view`  AS SELECT `g`.`id` AS `guest_id`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`email` AS `email`, `g`.`phone` AS `phone`, `g`.`address` AS `address`, `g`.`id_proof_type` AS `id_proof_type`, `g`.`id_proof_number` AS `id_proof_number`, `g`.`company_name` AS `guest_company`, `g`.`gst_number` AS `guest_gst`, `cb`.`company_name` AS `booking_company`, `cb`.`gst_number` AS `booking_gst`, `cb`.`contact_person` AS `contact_person`, `cb`.`contact_phone` AS `contact_phone`, `cb`.`contact_email` AS `contact_email`, `cb`.`billing_address` AS `billing_address`, `g`.`created_at` AS `created_at` FROM (`guests` `g` left join `corporate_bookings` `cb` on(`g`.`id` = `cb`.`booking_id`)) ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `guest_corporate_view`  AS SELECT `g`.`id` AS `guest_id`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`email` AS `email`, `g`.`phone` AS `phone`, `g`.`address` AS `address`, `g`.`id_proof_type` AS `id_proof_type`, `g`.`id_proof_number` AS `id_proof_number`, `g`.`company_name` AS `guest_company`, `g`.`gst_number` AS `guest_gst`, `cb`.`company_name` AS `booking_company`, `cb`.`gst_number` AS `booking_gst`, `cb`.`contact_person` AS `contact_person`, `cb`.`contact_phone` AS `contact_phone`, `cb`.`contact_email` AS `contact_email`, `cb`.`billing_address` AS `billing_address`, `g`.`created_at` AS `created_at` FROM (`guests` `g` left join `corporate_bookings` `cb` on(`g`.`id` = `cb`.`booking_id`)) ;
 
 -- --------------------------------------------------------
 
 --
 -- Structure for view `prebooked_rooms`
 --
-DROP TABLE IF EXISTS `prebooked_rooms`;
+DROP VIEW IF EXISTS `prebooked_rooms`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `prebooked_rooms`  AS SELECT `r`.`id` AS `room_id`, `r`.`room_number` AS `room_number`, `r`.`room_type_id` AS `room_type_id`, `rt`.`name` AS `room_type_name`, `r`.`floor` AS `floor`, `r`.`status` AS `status`, `r`.`price` AS `price_per_night`, `r`.`is_prebooked` AS `is_prebooked`, `r`.`prebook_date` AS `prebook_date`, `r`.`prebook_guest_name` AS `prebook_guest_name`, `r`.`prebook_phone` AS `prebook_phone`, `r`.`prebook_notes` AS `prebook_notes`, `b`.`id` AS `booking_id`, `b`.`check_in_date` AS `check_in_date`, `b`.`check_out_date` AS `check_out_date`, `b`.`check_in_time` AS `check_in_time`, `b`.`check_out_time` AS `check_out_time`, `b`.`total_amount` AS `total_amount`, `b`.`status` AS `booking_status`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`phone` AS `guest_phone`, `g`.`email` AS `guest_email` FROM (((`rooms` `r` left join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) left join `bookings` `b` on(`r`.`id` = `b`.`room_id` and `b`.`status` in ('confirmed','checked_in','booked'))) left join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) WHERE `r`.`is_prebooked` = 1 OR `b`.`id` is not null ORDER BY `r`.`room_number` ASC ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `prebooked_rooms`  AS SELECT `r`.`id` AS `room_id`, `r`.`room_number` AS `room_number`, `r`.`room_type_id` AS `room_type_id`, `rt`.`name` AS `room_type_name`, `r`.`floor` AS `floor`, `r`.`status` AS `status`, `r`.`price` AS `price_per_night`, `r`.`is_prebooked` AS `is_prebooked`, `r`.`prebook_date` AS `prebook_date`, `r`.`prebook_guest_name` AS `prebook_guest_name`, `r`.`prebook_phone` AS `prebook_phone`, `r`.`prebook_notes` AS `prebook_notes`, `b`.`id` AS `booking_id`, `b`.`check_in_date` AS `check_in_date`, `b`.`check_out_date` AS `check_out_date`, `b`.`check_in_time` AS `check_in_time`, `b`.`check_out_time` AS `check_out_time`, `b`.`total_amount` AS `total_amount`, `b`.`status` AS `booking_status`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`phone` AS `guest_phone`, `g`.`email` AS `guest_email` FROM (((`rooms` `r` left join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) left join `bookings` `b` on(`r`.`id` = `b`.`room_id` and `b`.`status` in ('confirmed','checked_in','booked'))) left join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) WHERE `r`.`is_prebooked` = 1 OR `b`.`id` is not null ORDER BY `r`.`room_number` ASC ;
 
 -- --------------------------------------------------------
 
 --
 -- Structure for view `remaining_payment_history`
 --
-DROP TABLE IF EXISTS `remaining_payment_history`;
+DROP VIEW IF EXISTS `remaining_payment_history`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `remaining_payment_history`  AS SELECT `rp`.`id` AS `id`, `rp`.`booking_id` AS `booking_id`, `b`.`booking_reference` AS `booking_reference`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`phone` AS `phone`, `b`.`room_number` AS `room_number`, `rp`.`original_remaining` AS `original_remaining`, `rp`.`payment_amount` AS `payment_amount`, `rp`.`new_remaining` AS `new_remaining`, `rp`.`payment_method` AS `payment_method`, `rp`.`payment_date` AS `payment_date`, `rp`.`transaction_id` AS `transaction_id`, `rp`.`receipt_number` AS `receipt_number`, `rp`.`notes` AS `notes`, `u`.`full_name` AS `processed_by_name` FROM ((((`remaining_payments` `rp` join `bookings` `b` on(`rp`.`booking_id` = `b`.`id`)) join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) join `rooms` `r` on(`b`.`room_id` = `r`.`id`)) join `users` `u` on(`rp`.`processed_by` = `u`.`id`)) ORDER BY `rp`.`payment_date` DESC ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `remaining_payment_history`  AS SELECT `rp`.`id` AS `id`, `rp`.`booking_id` AS `booking_id`, `b`.`booking_reference` AS `booking_reference`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`phone` AS `phone`, `b`.`room_number` AS `room_number`, `rp`.`original_remaining` AS `original_remaining`, `rp`.`payment_amount` AS `payment_amount`, `rp`.`new_remaining` AS `new_remaining`, `rp`.`payment_method` AS `payment_method`, `rp`.`payment_date` AS `payment_date`, `rp`.`transaction_id` AS `transaction_id`, `rp`.`receipt_number` AS `receipt_number`, `rp`.`notes` AS `notes`, `u`.`full_name` AS `processed_by_name` FROM ((((`remaining_payments` `rp` join `bookings` `b` on(`rp`.`booking_id` = `b`.`id`)) join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) join `rooms` `r` on(`b`.`room_id` = `r`.`id`)) join `users` `u` on(`rp`.`processed_by` = `u`.`id`)) ORDER BY `rp`.`payment_date` DESC ;
 
 -- --------------------------------------------------------
 
 --
 -- Structure for view `room_availability`
 --
-DROP TABLE IF EXISTS `room_availability`;
+DROP VIEW IF EXISTS `room_availability`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `room_availability`  AS SELECT `r`.`id` AS `id`, `r`.`room_number` AS `room_number`, `r`.`room_type_id` AS `room_type_id`, `rt`.`name` AS `room_type`, `r`.`floor` AS `floor`, `r`.`status` AS `status`, `r`.`price` AS `price`, `r`.`is_prebooked` AS `is_prebooked`, `b`.`check_in_date` AS `check_in_date`, `b`.`check_out_date` AS `check_out_date`, `b`.`guest_count` AS `guest_count`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`phone` AS `phone` FROM (((`rooms` `r` left join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) left join `bookings` `b` on(`r`.`id` = `b`.`room_id` and `b`.`status` in ('confirmed','checked_in','booked'))) left join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) ORDER BY `r`.`room_number` ASC ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `room_availability`  AS SELECT `r`.`id` AS `id`, `r`.`room_number` AS `room_number`, `r`.`room_type_id` AS `room_type_id`, `rt`.`name` AS `room_type`, `r`.`floor` AS `floor`, `r`.`status` AS `status`, `r`.`price` AS `price`, `r`.`is_prebooked` AS `is_prebooked`, `b`.`check_in_date` AS `check_in_date`, `b`.`check_out_date` AS `check_out_date`, `b`.`guest_count` AS `guest_count`, `g`.`first_name` AS `first_name`, `g`.`last_name` AS `last_name`, `g`.`phone` AS `phone` FROM (((`rooms` `r` left join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) left join `bookings` `b` on(`r`.`id` = `b`.`room_id` and `b`.`status` in ('confirmed','checked_in','booked'))) left join `guests` `g` on(`b`.`guest_id` = `g`.`id`)) ORDER BY `r`.`room_number` ASC ;
 
 -- --------------------------------------------------------
 
 --
 -- Structure for view `room_detailed_status`
 --
-DROP TABLE IF EXISTS `room_detailed_status`;
+DROP VIEW IF EXISTS `room_detailed_status`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `room_detailed_status`  AS SELECT `r`.`id` AS `id`, `r`.`room_number` AS `room_number`, `r`.`status` AS `room_status`, `rt`.`name` AS `room_type`, `rt`.`base_price` AS `base_price`, `rt`.`capacity` AS `capacity`, `rt`.`description` AS `description`, `r`.`floor` AS `floor`, CASE WHEN `b`.`id` is not null THEN `b`.`status` ELSE 'no_booking' END AS `booking_status`, CASE WHEN `b`.`id` is not null THEN `b`.`booking_reference` ELSE 'N/A' END AS `booking_reference`, CASE WHEN `b`.`id` is not null THEN `b`.`check_in_date` ELSE NULL END AS `check_in_date`, CASE WHEN `b`.`id` is not null THEN `b`.`check_out_date` ELSE NULL END AS `check_out_date`, `r`.`created_at` AS `created_at` FROM ((`rooms` `r` left join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) left join `bookings` `b` on(`r`.`room_number` = `b`.`room_number` and `b`.`status` in ('confirmed','checked_in'))) ORDER BY `r`.`room_number` ASC ;
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `room_detailed_status`  AS SELECT `r`.`id` AS `id`, `r`.`room_number` AS `room_number`, `r`.`status` AS `room_status`, `rt`.`name` AS `room_type`, `rt`.`base_price` AS `base_price`, `rt`.`capacity` AS `capacity`, `rt`.`description` AS `description`, `r`.`floor` AS `floor`, CASE WHEN `b`.`id` is not null THEN `b`.`status` ELSE 'no_booking' END AS `booking_status`, CASE WHEN `b`.`id` is not null THEN `b`.`booking_reference` ELSE 'N/A' END AS `booking_reference`, CASE WHEN `b`.`id` is not null THEN `b`.`check_in_date` ELSE NULL END AS `check_in_date`, CASE WHEN `b`.`id` is not null THEN `b`.`check_out_date` ELSE NULL END AS `check_out_date`, `r`.`created_at` AS `created_at` FROM ((`rooms` `r` left join `room_types` `rt` on(`r`.`room_type_id` = `rt`.`id`)) left join `bookings` `b` on(`r`.`room_number` = `b`.`room_number` and `b`.`status` in ('confirmed','checked_in'))) ORDER BY `r`.`room_number` ASC ;
 
 --
 -- Indexes for dumped tables
